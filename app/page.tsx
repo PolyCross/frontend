@@ -12,7 +12,7 @@ const Home = () => {
         </h1>
       </div>
       <p className='text-center text-2xl mt-4'>
-        PolyCross is a cross-chain bridge project that aims to connect different EVM blockchains, enabling asset cross-chain transfers and swaps.
+        PolyCross aims to connect different EVM blockchains
       </p>
       <div className='flex justify-center mt-8'>
         <Link href='/bridge'>
@@ -21,7 +21,7 @@ const Home = () => {
           </button>
         </Link>
       </div>
-      <div className='bg-blue-700 mt-40'>
+      <div className='bg-blue-700 mt-20'>
         <h2 className='flex justify-center mt-4 text-2xl text-white'>
           <span className='mt-8'>Networks Already Supported</span>
         </h2><br />
