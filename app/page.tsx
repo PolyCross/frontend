@@ -27,8 +27,8 @@ const Home = () => {
         </h2><br />
         <div className='flex justify-center mt-8'>
           <Image alt='Polygon' src='/polygon-logo.svg' width={120} height={90} className='mb-4'/>
-          <Image alt='Ethereum' src='/etherum-logo.svg' width={135} height={90} className='ml-14 mb-8' />
-          <Image alt='BNB' src='/bnb-chain.svg' width={120} height={90} className='ml-14 mb-8' />
+          <Image alt='Ethereum' src='/etherum-logo.svg' width={135} height={90} className='ml-28 mb-8' />
+          <Image alt='BNB' src='/bnb-chain.svg' width={120} height={90} className='ml-28 mb-8' />
         </div>
       </div>
     </section>
