@@ -1,7 +1,6 @@
 'use client'
 
-import { Approve, Wallet } from "@/components"
-import Token from "@/components/Token"
+import { Approve, Token, Wallet } from "@/components"
 import Link from "next/link"
 import { useState } from "react"
 import { Address } from "viem"
