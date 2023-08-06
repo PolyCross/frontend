@@ -1,5 +1,7 @@
 import Config from "./Config";
+import Wallet from "./Wallet";
 
 export {
-    Config
+    Config,
+    Wallet
 }

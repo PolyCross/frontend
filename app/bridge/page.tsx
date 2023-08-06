@@ -1,6 +1,4 @@
-'use client'
-
-import { ConnectButton } from "@rainbow-me/rainbowkit"
+import { Wallet } from "@/components"
 import Link from "next/link"
 
 const Bridge = () => {
@@ -14,9 +12,7 @@ const Bridge = () => {
             </button>
           </Link>
         </div>
-        <div className="mt-2 mb-2 ml-auto mr-20">
-          <ConnectButton />
-        </div>
+        <Wallet containerStyles="mt-2 mb-2 ml-auto mr-20" />
       </div>
     </section>
   )
