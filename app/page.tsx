@@ -16,7 +16,7 @@ const Home = () => {
       </p>
       <div className='flex justify-center mt-8'>
         <Link href='/bridge'>
-          <button className='black_btn text-2xl'>
+          <button className='indigo_btn text-2xl'>
             Enter App
           </button>
         </Link>
