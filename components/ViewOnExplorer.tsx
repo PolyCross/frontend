@@ -27,8 +27,8 @@ const ViewOnExplorer = ({ chainId, hash, isSuccess }: ViewOnExplorerProps) => {
   };
 
   return (
-    <div>
-      {isSuccess && <button className="black_btn text-lg" onClick={() => handleChainChange(chainId)}>
+    <div className="ml-4">
+      {isSuccess && <button className="green_btn text-lg" onClick={() => handleChainChange(chainId)}>
         <a href={baseURL + hash} target="_blank">
           ViewOnExplorer
         </a>

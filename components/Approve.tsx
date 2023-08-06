@@ -3,11 +3,13 @@
 import { ApproveProps } from "@/types"
 import { useState } from "react"
 import { Hex, parseUnits } from "viem"
-import { erc20ABI, useWaitForTransaction } from "wagmi"
+import { erc20ABI, useNetwork, useWaitForTransaction } from "wagmi"
 import { readContract, writeContract } from "wagmi/actions"
+import { ViewOnExplorer } from "."
 
 const Approve = ({ token, spender, amount }: ApproveProps) => {
-    const [txHash, setTxHash] = useState<Hex>()
+    const [hash, setHash] = useState<Hex>()
+    const { chain } = useNetwork()
 
     const approve = async () => {
         const decimals = await readContract({
@@ -15,30 +17,26 @@ const Approve = ({ token, spender, amount }: ApproveProps) => {
             abi: erc20ABI,
             functionName: 'decimals'
         })
-
         const { hash } = await writeContract({
             address: token,
             abi: erc20ABI,
             functionName: 'approve',
             args: [spender, parseUnits(amount, decimals)]
         })
-
-        setTxHash(hash)
+        setHash(hash)
     }
 
     const { isLoading, isSuccess } = useWaitForTransaction({
-        hash: txHash
+        hash: hash
     })
 
     return (
-        <div>
-            <button className='black_btn text-lg' onClick={approve}>
+        <div className="flex justify-center ml-4">
+            <button className='sky_btn text-lg' onClick={approve}>
                 Approve
             </button>
-            <div>
-                {isLoading && <h3>Loading</h3>}
-                {isSuccess && <h3>Succeed</h3>}
-            </div>
+            {isLoading ? <button className="green_btn text-lg ml-4" disabled={true}>Loading</button>
+                : <ViewOnExplorer chainId={chain?.id!} hash={hash!} isSuccess={isSuccess} />}
         </div>
     )
 }
