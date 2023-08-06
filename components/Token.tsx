@@ -10,7 +10,7 @@ const Token = ({ Addr }: TokenProps) => {
 
     return (
         <div className="mr-6">
-            <button className={`sky_btn text-lg h-12 w-${isLoading ? 28 : isError ? 48 : 20}`} disabled={true}>
+            <button className={`black_btn text-lg h-12 w-${isLoading ? 28 : isError ? 48 : 20}`} disabled={true}>
                 {isLoading ? 'Loading' : isError ? 'Invalid Address' : data}
             </button>
         </div>

@@ -22,6 +22,10 @@
   @apply bg-green-500 rounded-full py-1.5 px-5 text-white transition-all hover:text-black text-center flex items-center justify-center;
 }
 
+.black_btn {
+  @apply bg-black rounded-full py-1.5 px-5 text-white transition-all text-center flex items-center justify-center;
+}
+
 .input_address {
   @apply border-4 border-blue-600 rounded-full text-center h-12 w-80 py-1.5 px-5
 }
