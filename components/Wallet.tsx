@@ -4,7 +4,7 @@ import { ConnectButton } from "@rainbow-me/rainbowkit"
 const Wallet = ({ containerStyles }: WalletProps) => {
   return (
     <div className={containerStyles}>
-        <ConnectButton />
+      <ConnectButton />
     </div>
   )
 }
