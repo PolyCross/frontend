@@ -4,11 +4,11 @@ import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import "@rainbow-me/rainbowkit/styles.css";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { polygonMumbai, sepolia } from "wagmi/chains";
-import { publicProvider } from "wagmi/providers/public";
+import { infuraProvider } from "wagmi/providers/infura";
 
 const { chains, publicClient } = configureChains(
   [sepolia, polygonMumbai],
-  [publicProvider()]
+  [infuraProvider({ apiKey: "1dfa3e0d64524dd091a0bcfc39c8bd4e" })]
 );
 
 const { connectors } = getDefaultWallets({
