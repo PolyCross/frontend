@@ -5,7 +5,7 @@ import Link from 'next/link'
 const Home = () => {
   return (
     <section>
-      <div className='w-full flex justify-center mt-14'>
+      <div className='w-full flex justify-center mt-6'>
         <h1 className='head_text text-center'>
           Bridge Tokens &amp; Swaps
           <br />
@@ -22,7 +22,7 @@ const Home = () => {
           </button>
         </Link>
       </div>
-      <div className='bg-blue-700 mt-20'>
+      <div className='bg-blue-700 mt-8'>
         <h2 className='flex justify-center mt-4 text-2xl text-white'>
           <span className='mt-8'>Networks Already Supported</span>
         </h2><br />
