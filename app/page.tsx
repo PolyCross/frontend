@@ -1,3 +1,4 @@
+import { Footer } from '@/components'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -31,6 +32,7 @@ const Home = () => {
           <Image alt='BNB' src='/bnb-chain.svg' width={120} height={90} className='ml-28 mb-8' />
         </div>
       </div>
+      <Footer />
     </section>
   )
 }
