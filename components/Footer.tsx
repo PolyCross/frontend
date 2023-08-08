@@ -8,12 +8,12 @@ const Footer = () => {
                     <Image alt="github" src='./github.svg' width={30} height={30} />
                 </a>
             </div>
-            <div className="flex justify-center mt-6">
+            <div className="flex justify-center mt-4">
                 <h3>
                     Author: <b>Confucian</b>
                 </h3>
             </div>
-            <div className="flex justify-center mt-4">
+            <div className="flex justify-center mt-2">
                 <h4>
                     <i>confucian.e@gmail.com</i>
                 </h4>
