@@ -5,7 +5,7 @@ import Link from 'next/link'
 const Home = () => {
   return (
     <section>
-      <div className='w-full flex justify-center mt-20'>
+      <div className='w-full flex justify-center mt-14'>
         <h1 className='head_text text-center'>
           Bridge Tokens &amp; Swaps
           <br />
