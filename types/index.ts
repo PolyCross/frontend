@@ -19,3 +19,9 @@ export interface ViewOnExplorerProps {
 export interface TokenProps {
     Addr: Address
 }
+
+export interface BridgeProps {
+    token: Address,
+    amount: string,
+    receiver: Address
+}
