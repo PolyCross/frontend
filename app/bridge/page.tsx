@@ -44,17 +44,6 @@ const Bridge = () => {
         </div>
       </section>
 
-      {/* <section>
-        <div>
-          <div className="flex mt-20 justify-center">
-            <Token Addr={toTokenAddr} />
-            <div>
-              <input className="input_address" placeholder="Token Address" onChange={(e) => setToTokenAddr(e.target.value as Address)} />
-            </div>
-          </div>
-        </div>
-      </section> */}
-
       <section>
         <div className="flex mt-20 justify-center">
           <input
