@@ -1,15 +1,15 @@
 "use client";
 
 import { Approve, Token, Wallet, BridgeIn } from "@/components";
-import { BridgeAddress } from "@/constants";
+import { BridgeAddress as spender } from "@/constants";
 import Link from "next/link";
 import { useState } from "react";
 import { Address } from "viem";
 
 const Bridge = () => {
-  const [token, setToken] = useState<Address>("0x");
-  const [amount, setAmount] = useState<string>("");
-  const [receiver, setReceiver] = useState<Address>("0x");
+  const [token, setToken] = useState<Address>();
+  const [amount, setAmount] = useState<string>();
+  const [receiver, setReceiver] = useState<Address>();
 
   return (
     <>
@@ -18,6 +18,11 @@ const Bridge = () => {
           <div className="mt-2 mb-2 ml-20">
             <Link href="/">
               <button className="indigo_btn text-lg">Home</button>
+            </Link>
+          </div>
+          <div className="mt-2 mb-2 ml-auto">
+            <Link href="/bridge-swap">
+              <button className="indigo_btn text-lg">Bridge Swap</button>
             </Link>
           </div>
           <Wallet containerStyles="mt-2 mb-2 ml-auto mr-20" />
@@ -55,7 +60,7 @@ const Bridge = () => {
       </section>
 
       <section className="mt-20">
-        <Approve token={token} spender={BridgeAddress} amount={amount} /> <br />
+        <Approve {...{ token, spender, amount }} /> <br />
         <BridgeIn {...{ token, amount, receiver }} />
       </section>
     </>
