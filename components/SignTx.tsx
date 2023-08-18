@@ -1,16 +1,14 @@
-import { ViewOnExplorerProps } from "@/types";
-import { useNetwork, useWaitForTransaction } from "wagmi";
+import { SignTxProps } from "@/types";
+import { useContractWrite, useNetwork, useWaitForTransaction } from "wagmi";
 import { polygonMumbai, sepolia } from "wagmi/chains";
 
-const SignTx = ({
-  hash,
-  write,
-  signInfo,
-  signingInfo,
-}: ViewOnExplorerProps) => {
+const SignTx = ({ config, signInfo, signingInfo }: SignTxProps) => {
   const { chain } = useNetwork();
+
+  const { data, write } = useContractWrite(config);
+
   const { isLoading, isSuccess } = useWaitForTransaction({
-    hash,
+    hash: data?.hash,
   });
 
   const URL = () => {
@@ -27,17 +25,17 @@ const SignTx = ({
   };
 
   return (
-    <div className="flex justify-center ml-4">
+    <div className="flex justify-center">
       <button
         className={`text-lg ${isLoading ? "green" : "sky"}_btn`}
         disabled={isLoading}
-        onClick={() => write()}
+        onClick={() => write?.()}
       >
         {isLoading ? signingInfo : signInfo}
       </button>
       {isSuccess && (
         <button className="ml-4 green_btn text-lg">
-          <a href={URL() + hash} target="_blank">
+          <a href={URL() + data?.hash} target="_blank">
             ViewOnExplorer
           </a>
         </button>

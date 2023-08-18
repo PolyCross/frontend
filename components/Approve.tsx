@@ -1,6 +1,6 @@
 import { ApproveProps } from "@/types";
 import { parseUnits } from "viem";
-import { erc20ABI, useContractWrite, useToken } from "wagmi";
+import { erc20ABI, usePrepareContractWrite, useToken } from "wagmi";
 import { SignTx } from ".";
 
 const Approve = ({ token, spender, amount }: ApproveProps) => {
@@ -8,21 +8,17 @@ const Approve = ({ token, spender, amount }: ApproveProps) => {
     address: token,
   });
 
-  const { data, write } = useContractWrite({
-    address: token!,
+  const { config } = usePrepareContractWrite({
+    address: token,
     abi: erc20ABI,
     functionName: "approve",
-    args: [spender, parseUnits(amount, tokenData?.decimals!)],
+    args: [
+      spender,
+      amount ? parseUnits(amount, tokenData?.decimals!) : BigInt(0),
+    ],
   });
 
-  return (
-    <SignTx
-      hash={data?.hash}
-      write={write}
-      signInfo="Approve"
-      signingInfo="Approving"
-    />
-  );
+  return <SignTx config={config} signInfo="Approve" signingInfo="Approving" />;
 };
 
 export default Approve;
