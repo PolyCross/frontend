@@ -5,23 +5,24 @@ export interface WalletProps {
 }
 
 export interface ApproveProps {
-    token: Address,
+    token: Address | undefined,
     spender: Address,
     amount: string
 }
 
 export interface ViewOnExplorerProps {
-    chainId: number,
-    hash: Hex,
-    isSuccess: boolean
+    hash: Hex | undefined,
+    write: () => void,
+    signInfo: string,
+    signingInfo: string
 }
 
 export interface TokenProps {
-    Addr: Address
+    Addr: Address | undefined
 }
 
 export interface BridgeProps {
-    token: Address,
+    token: Address | undefined,
     amount: string,
     receiver: Address
 }
