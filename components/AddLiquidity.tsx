@@ -1,68 +1,43 @@
 import { BridgeSwapABI, BridgeSwapAddress } from "@/constants";
 import { BridgeSwapAddLiquidity } from "@/types";
-import { useState } from "react";
-import { Hex, parseUnits } from "viem";
-import { erc20ABI, useNetwork, useWaitForTransaction } from "wagmi";
-import { readContract, writeContract } from "wagmi/actions";
-import { ViewOnExplorer } from ".";
+import { parseUnits } from "viem";
+import { usePrepareContractWrite, useToken } from "wagmi";
+import { SignTx } from ".";
 
-const AddLiquidity = ({
+const AddLiquidity = async ({
   tokenA,
   tokenB,
   amountA,
   amountB,
   to,
 }: BridgeSwapAddLiquidity) => {
-  const [hash, setHash] = useState<Hex>();
-  const { chain } = useNetwork();
+  const { data: tokenA_data } = useToken({
+    address: tokenA,
+  });
 
-  const addLiquidity = async () => {
-    const decimalsA = await readContract({
-      address: tokenA,
-      abi: erc20ABI,
-      functionName: "decimals",
-    });
-    const decimalsB = await readContract({
-      address: tokenB,
-      abi: erc20ABI,
-      functionName: "decimals",
-    });
-    const { hash } = await writeContract({
-      address: BridgeSwapAddress,
-      abi: BridgeSwapABI,
-      functionName: "addLiquidity",
-      args: [
-        tokenA,
-        tokenB,
-        parseUnits(amountA, decimalsA),
-        parseUnits(amountB, decimalsB),
-        to,
-      ],
-    });
-    setHash(hash);
-  };
+  const { data: tokenB_data } = useToken({
+    address: tokenB,
+  });
 
-  const { isLoading, isSuccess } = useWaitForTransaction({
-    hash: hash,
+  const { config } = usePrepareContractWrite({
+    address: BridgeSwapAddress,
+    abi: BridgeSwapABI,
+    functionName: "addLiquidity",
+    args: [
+      tokenA,
+      tokenB,
+      parseUnits(amountA, tokenA_data?.decimals!),
+      parseUnits(amountB, tokenB_data?.decimals!),
+      to,
+    ],
   });
 
   return (
-    <div className="flex justify-center ml-4">
-      <button className="sky_btn text-lg" onClick={addLiquidity}>
-        Bridge
-      </button>
-      {isLoading ? (
-        <button className="green_btn text-lg ml-4" disabled={true}>
-          Loading
-        </button>
-      ) : (
-        <ViewOnExplorer
-          chainId={chain?.id!}
-          hash={hash!}
-          isSuccess={isSuccess}
-        />
-      )}
-    </div>
+    <SignTx
+      config={config}
+      signInfo="Add Liquidity"
+      signingInfo="Adding Liquidity"
+    />
   );
 };
 

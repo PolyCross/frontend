@@ -1,51 +1,31 @@
 import { BridgeSwapABI, BridgeSwapAddress } from "@/constants";
 import { BridgeSwapInProps } from "@/types";
-import { useState } from "react";
-import { Hex, parseUnits } from "viem";
-import { erc20ABI, useNetwork, useWaitForTransaction } from "wagmi";
-import { readContract, writeContract } from "wagmi/actions";
-import { ViewOnExplorer } from ".";
+import { parseUnits } from "viem";
+import { usePrepareContractWrite, useToken } from "wagmi";
+import { SignTx } from ".";
 
 const SwapIn = ({ amountIn, amountOutMin, path }: BridgeSwapInProps) => {
-  const [hash, setHash] = useState<Hex>();
-  const { chain } = useNetwork();
+  const { data: tokenData } = useToken({
+    address: path[0],
+  });
 
-  const swapIn = async () => {
-    const decimals = await readContract({
-      address: path[0],
-      abi: erc20ABI,
-      functionName: "decimals",
-    });
-    const { hash } = await writeContract({
-      address: BridgeSwapAddress,
-      abi: BridgeSwapABI,
-      functionName: "swapIn",
-      args: [parseUnits(amountIn, decimals), BigInt(amountOutMin), path],
-    });
-    setHash(hash);
-  };
-
-  const { isLoading, isSuccess } = useWaitForTransaction({
-    hash: hash,
+  const { config } = usePrepareContractWrite({
+    address: BridgeSwapAddress,
+    abi: BridgeSwapABI,
+    functionName: "swapIn",
+    args: [
+      parseUnits(amountIn, tokenData?.decimals!),
+      BigInt(amountOutMin),
+      path,
+    ],
   });
 
   return (
-    <div className="flex justify-center ml-4">
-      <button className="sky_btn text-lg" onClick={swapIn}>
-        Bridge
-      </button>
-      {isLoading ? (
-        <button className="green_btn text-lg ml-4" disabled={true}>
-          Loading
-        </button>
-      ) : (
-        <ViewOnExplorer
-          chainId={chain?.id!}
-          hash={hash!}
-          isSuccess={isSuccess}
-        />
-      )}
-    </div>
+    <SignTx
+      config={config}
+      signInfo="Swap"
+      signingInfo="Swaping"
+    />
   );
 };
 

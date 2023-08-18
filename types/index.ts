@@ -1,4 +1,5 @@
 import { Address, Hex } from "viem"
+import { PrepareWriteContractResult } from "wagmi/actions"
 
 export interface WalletProps {
     containerStyles?: string
@@ -7,12 +8,11 @@ export interface WalletProps {
 export interface ApproveProps {
     token: Address | undefined,
     spender: Address,
-    amount: string
+    amount: string | undefined
 }
 
-export interface ViewOnExplorerProps {
-    hash: Hex | undefined,
-    write: () => void,
+export interface SignTxProps {
+    config: PrepareWriteContractResult
     signInfo: string,
     signingInfo: string
 }
@@ -23,8 +23,8 @@ export interface TokenProps {
 
 export interface BridgeProps {
     token: Address | undefined,
-    amount: string,
-    receiver: Address
+    amount: string | undefined,
+    receiver: Address | undefined
 }
 
 export interface BridgeSwapInProps {
@@ -34,8 +34,8 @@ export interface BridgeSwapInProps {
 }
 
 export interface BridgeSwapAddLiquidity {
-    tokenA: Address,
-    tokenB: Address,
+    tokenA: Address | undefined,
+    tokenB: Address | undefined,
     amountA: string,
     amountB: string,
     to: Address
