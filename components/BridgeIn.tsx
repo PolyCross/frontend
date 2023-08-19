@@ -1,4 +1,4 @@
-import { BridgeABI, BridgeAddress, TestTokenAddress } from "@/constants";
+import { BridgeABI, BridgeAddress, tokenT_address } from "@/constants";
 import { BridgeProps } from "@/types";
 import { parseUnits } from "viem";
 import { useAccount, usePrepareContractWrite, useToken } from "wagmi";
@@ -15,7 +15,7 @@ const BridgeIn = ({ token, amount, receiver }: BridgeProps) => {
     abi: BridgeABI,
     functionName: "bridgeIn",
     args: [
-      token ? token : TestTokenAddress,
+      token ? token : tokenT_address,
       amount ? parseUnits(amount, tokenData?.decimals!) : BigInt(0),
       receiver ? receiver : address,
     ],
