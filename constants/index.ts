@@ -1,7 +1,7 @@
 import { parseAbi } from "viem";
 
 const bridge = [
-  "function bridgeIn(address token, uint256 amount, address operator) public",
+  "function bridgeIn(address token, uint256 amount) public",
   "function bridgeOut(address token, uint256 amount, address to) public",
 ];
 
@@ -20,8 +20,8 @@ const bridge_swap = [
 
 export const BridgeSwapABI = parseAbi(bridge_swap);
 
-export const BridgeSwapAddress = "0x31d0ce72C46940DDb5192D6006E8bC0Ca3Ebd805";
+export const BridgeSwapAddress = "0x53f5D3fAd7DA1bE9E2eaD516A0492E5CF21C9218";
 
-export const tokenA_address = "0xf2b7998a24DcA81B310ae03ac29058b87ead46bB"
-export const tokenB_address = "0xf2b7998a24DcA81B310ae03ac29058b87ead46bB";
-export const tokenT_address = "0xf2b7998a24DcA81B310ae03ac29058b87ead46bB";
+export const tokenA_address = "0xf93dd1e98Ad72f555522c1D25dEB663250aEfbAC"
+export const tokenB_address = "0xfc99C6B880D548f9172EdDe156B9d285F5027dD6";
+export const tokenC_address = "0x9652b3320550ceee00bca395060fad3419a94dc5";

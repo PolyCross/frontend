@@ -1,11 +1,10 @@
-import { BridgeABI, BridgeAddress, tokenT_address } from "@/constants";
+import { BridgeABI, BridgeAddress } from "@/constants";
 import { BridgeProps } from "@/types";
 import { parseUnits } from "viem";
-import { useAccount, usePrepareContractWrite, useToken } from "wagmi";
+import { usePrepareContractWrite, useToken } from "wagmi";
 import { SignTx } from ".";
 
-const BridgeIn = ({ token, amount, receiver }: BridgeProps) => {
-  const { address } = useAccount();
+const BridgeIn = ({ token, amount }: BridgeProps) => {
   const { data: tokenData } = useToken({
     address: token,
   });
@@ -14,11 +13,7 @@ const BridgeIn = ({ token, amount, receiver }: BridgeProps) => {
     address: BridgeAddress,
     abi: BridgeABI,
     functionName: "bridgeIn",
-    args: [
-      token ? token : tokenT_address,
-      amount ? parseUnits(amount, tokenData?.decimals!) : BigInt(0),
-      receiver ? receiver : address,
-    ],
+    args: [token, parseUnits(amount, tokenData?.decimals!)],
   });
 
   return <SignTx config={config} signInfo="Bridge" signingInfo="Bridging" />;

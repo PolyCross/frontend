@@ -12,15 +12,14 @@ export interface SignTxProps {
 }
 
 export interface ApproveProps {
-  token: Address | undefined;
+  token: Address;
   spender: Address;
-  amount: string | undefined;
+  amount: string;
 }
 
 export interface BridgeProps {
-  token: Address | undefined;
-  amount: string | undefined;
-  receiver: Address | undefined;
+  token: Address;
+  amount: string;
 }
 
 export interface BridgeSwapInProps {
@@ -32,7 +31,7 @@ export interface BridgeSwapInProps {
 export interface BridgeSwapCalculateAmountOut {
   token: Address | undefined;
   amountIn: string;
-  path: Address[];
+  path: (Address | undefined)[];
 }
 
 export interface BridgeSwapAddLiquidity {

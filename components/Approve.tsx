@@ -12,10 +12,7 @@ const Approve = ({ token, spender, amount }: ApproveProps) => {
     address: token,
     abi: erc20ABI,
     functionName: "approve",
-    args: [
-      spender,
-      amount ? parseUnits(amount, tokenData?.decimals!) : BigInt(0),
-    ],
+    args: [spender, parseUnits(amount, tokenData?.decimals!)],
   });
 
   return <SignTx config={config} signInfo="Approve" signingInfo="Approving" />;

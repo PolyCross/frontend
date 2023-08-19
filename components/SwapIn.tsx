@@ -15,7 +15,7 @@ const SwapIn = ({ amountIn, amountOutMin, path }: BridgeSwapInProps) => {
     functionName: "swapIn",
     args: [
       parseUnits(amountIn, tokenData?.decimals!),
-      BigInt(amountOutMin),
+      parseUnits(amountOutMin, tokenData?.decimals!),
       path,
     ],
   });
