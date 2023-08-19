@@ -1,7 +1,12 @@
 "use client";
 
-import { Approve, Token, Wallet, BridgeIn } from "@/components";
-import { BridgeAddress as spender } from "@/constants";
+import { Approve, BridgeIn, Wallet } from "@/components";
+import {
+  tokenT_address,
+  BridgeAddress as spender,
+  tokenA_address,
+  tokenB_address,
+} from "@/constants";
 import Link from "next/link";
 import { useState } from "react";
 import { Address } from "viem";
@@ -32,13 +37,12 @@ const Bridge = () => {
       <section className="mt-24">
         <div className="flex justify-center">
           <div className="flex">
-            <Token Addr={token} />
             <div>
-              <input
-                className="input_address"
-                placeholder="Token Address"
-                onChange={(e) => setToken(e.target.value as Address)}
-              />
+              <select className="select_frame" onChange={(e) => setToken(e.target.value as Address)}>
+                <option value={tokenT_address}>TokenT</option>
+                <option value={tokenA_address}>TokenA</option>
+                <option value={tokenB_address}>TokenB</option>
+              </select>
               <input
                 className="input_amount ml-6"
                 placeholder="Token Amount"

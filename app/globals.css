@@ -33,3 +33,7 @@
 .input_amount {
   @apply border-4 border-blue-600 rounded-full text-center h-12 w-40 py-1.5 px-5
 }
+
+.select_frame {
+  @apply appearance-none text-center text-white bg-indigo-500 border border-gray-300 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:border-blue-500
+}

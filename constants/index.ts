@@ -9,8 +9,6 @@ export const BridgeABI = parseAbi(bridge);
 
 export const BridgeAddress = "0x9fE146cFfa1dBfff382fFf19f56C55F44DA2baA5";
 
-export const TestTokenAddress = "0xf2b7998a24DcA81B310ae03ac29058b87ead46bB";
-
 // ===================================================================================================
 
 const bridge_swap = [
@@ -23,3 +21,7 @@ const bridge_swap = [
 export const BridgeSwapABI = parseAbi(bridge_swap);
 
 export const BridgeSwapAddress = "0x31d0ce72C46940DDb5192D6006E8bC0Ca3Ebd805";
+
+export const tokenA_address = "0xf2b7998a24DcA81B310ae03ac29058b87ead46bB"
+export const tokenB_address = "0xf2b7998a24DcA81B310ae03ac29058b87ead46bB";
+export const tokenT_address = "0xf2b7998a24DcA81B310ae03ac29058b87ead46bB";
