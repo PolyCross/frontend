@@ -7,6 +7,7 @@ import SwapIn from "./SwapIn";
 import Token from "./Token";
 import SignTx from "./SignTx";
 import Wallet from "./Wallet";
+import CalculateAmountOut from "./CalculateAmountOut";
 
 export {
   Approve,
@@ -18,4 +19,5 @@ export {
   Token,
   SignTx,
   Wallet,
+  CalculateAmountOut,
 };
