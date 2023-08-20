@@ -1,11 +1,6 @@
-import {
-  BridgeSwapABI,
-  BridgeSwapAddress,
-  tokenA_address,
-  tokenC_address,
-} from "@/constants";
+import { BridgeSwapABI, BridgeSwapAddress } from "@/constants";
 import { BridgeSwapCalculateAmountOut } from "@/types";
-import { formatUnits, parseUnits, zeroAddress } from "viem";
+import { formatUnits, parseUnits } from "viem";
 import { useContractRead, useToken } from "wagmi";
 
 const CalculateAmountOut = ({
@@ -21,10 +16,7 @@ const CalculateAmountOut = ({
     address: BridgeSwapAddress,
     abi: BridgeSwapABI,
     functionName: "calculateAmountOut",
-    args: [
-      amountIn ? parseUnits(amountIn, tokenData?.decimals!) : BigInt(0),
-      path.includes(undefined) ? [tokenC_address, tokenA_address] : path,
-    ],
+    args: [parseUnits(amountIn, tokenData?.decimals!), path],
   });
 
   const temp_data = data

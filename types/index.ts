@@ -23,7 +23,7 @@ export interface BridgeProps {
 }
 
 export interface TokenProps {
-  token: Address
+  token: Address;
 }
 
 export interface BridgeSwapInProps {
@@ -33,22 +33,7 @@ export interface BridgeSwapInProps {
 }
 
 export interface BridgeSwapCalculateAmountOut {
-  token: Address | undefined;
+  token: Address;
   amountIn: string;
-  path: (Address | undefined)[];
-}
-
-export interface BridgeSwapAddLiquidity {
-  tokenA: Address | undefined;
-  tokenB: Address | undefined;
-  amountA: string;
-  amountB: string;
-  to: Address;
-}
-
-export interface BridgeSwapRemoveLiquidity {
-  tokenA: Address;
-  tokenB: Address;
-  liquidity: string;
-  to: Address;
+  path: Address[];
 }

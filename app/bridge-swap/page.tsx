@@ -1,7 +1,12 @@
 "use client";
 
 import { Approve, CalculateAmountOut, SwapIn, Wallet } from "@/components";
-import { BridgeSwapAddress, tokenA_address, tokenB_address, tokenC_address } from "@/constants";
+import {
+  BridgeSwapAddress,
+  tokenA_address,
+  tokenB_address,
+  tokenC_address,
+} from "@/constants";
 import Link from "next/link";
 import { useState } from "react";
 import { Address } from "viem";
@@ -13,9 +18,9 @@ const BridgeSwap = () => {
   const [tokenOut, setTokenOut] = useState<Address>(tokenB_address);
 
   const amoutOutMin = () => {
-    const res = parseFloat(amountIn) * parseFloat(slippage) / 100;
+    const res = (parseFloat(amountIn) * parseFloat(slippage)) / 100;
     return res.toString();
-  }
+  };
 
   return (
     <>
@@ -48,7 +53,7 @@ const BridgeSwap = () => {
             <select
               className="select_frame mr-8"
               onChange={(e) => setTokenIn(e.target.value as Address)}
-            > 
+            >
               <option value={tokenA_address}>TokenA</option>
               <option value={tokenB_address}>TokenB</option>
               <option value={tokenC_address}>TokenC</option>
@@ -58,7 +63,11 @@ const BridgeSwap = () => {
       </section>
 
       <section>
-        <h2 className="mt-8 flex justify-center">Selected Token Address: {tokenIn}</h2>
+        <div>
+          <h2 className="mt-8 flex justify-center">
+            Selected Token Address: {tokenIn}
+          </h2>
+        </div>
       </section>
 
       <section>
@@ -78,7 +87,9 @@ const BridgeSwap = () => {
       </section>
 
       <section>
-        <h2 className="mt-8 flex justify-center">Selected Token Address: {tokenOut}</h2>
+        <h2 className="mt-8 flex justify-center">
+          Selected Token Address: {tokenOut}
+        </h2>
       </section>
 
       <section>
@@ -87,8 +98,7 @@ const BridgeSwap = () => {
             SwapIn Amount:{" "}
             <input
               className="input_amount mt-8 mr-4"
-              placeholder="Token Amount"
-              value={amountIn}
+              placeholder={amountIn}
               onChange={(e) => setAmountIn(e.target.value)}
             />
           </div>
@@ -102,10 +112,7 @@ const BridgeSwap = () => {
             <input
               className="border-4 border-blue-600  rounded-full text-center h-8 w-16 py-1.5 px-2"
               type="number"
-              step="0.01"
-              min="0.01"
-              max="100"
-              value="0.3"
+              placeholder="0.3"
               onChange={(e) => setSlippage(e.target.value)}
             />
             %
@@ -115,19 +122,31 @@ const BridgeSwap = () => {
 
       <section>
         <div className="flex mt-4 justify-center">
-          <CalculateAmountOut token={tokenIn} amountIn={amountIn!} path={[tokenIn, tokenOut]} />
+          <CalculateAmountOut
+            token={tokenIn}
+            amountIn={amountIn}
+            path={[tokenIn, tokenOut]}
+          />
         </div>
       </section>
 
       <section>
         <div className="flex mt-6 justify-center">
-          <Approve token={tokenIn} amount={amountIn} spender={BridgeSwapAddress} />
+          <Approve
+            token={tokenIn}
+            amount={amountIn}
+            spender={BridgeSwapAddress}
+          />
         </div>
       </section>
 
       <section>
         <div className="flex mt-4 justify-center">
-          <SwapIn amountIn={amountIn} amountOutMin={amoutOutMin()} path={[tokenIn, tokenOut]} />
+          <SwapIn
+            amountIn={amountIn}
+            amountOutMin={amoutOutMin()}
+            path={[tokenIn, tokenOut]}
+          />
         </div>
       </section>
     </>
