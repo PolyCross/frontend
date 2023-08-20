@@ -1,13 +1,14 @@
 import { parseAbi } from "viem";
 
 const bridge = [
+  "function reserve(address token) public returns (uint256)",
   "function bridgeIn(address token, uint256 amount) public",
   "function bridgeOut(address token, uint256 amount, address to) public",
 ];
 
 export const BridgeABI = parseAbi(bridge);
 
-export const BridgeAddress = "0x9fE146cFfa1dBfff382fFf19f56C55F44DA2baA5";
+export const BridgeAddress = "0xEad0d3C980fc237A748ea88Ba8459Fa4C188eBAd";
 
 // ===================================================================================================
 

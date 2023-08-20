@@ -7,7 +7,6 @@ import RemoveLiquidity from "./RemoveLiquidity";
 import Reserve from "./Reserve";
 import SignTx from "./SignTx";
 import SwapIn from "./SwapIn";
-import Token from "./Token";
 import Wallet from "./Wallet";
 
 export {
@@ -20,6 +19,5 @@ export {
   Reserve,
   SignTx,
   SwapIn,
-  Token,
   Wallet,
 };
