@@ -1,6 +1,6 @@
 "use client";
 
-import { Approve, BridgeIn, Wallet } from "@/components";
+import { Approve, BridgeIn, Reserve, Wallet } from "@/components";
 import {
   BridgeAddress as spender,
   tokenA_address,
@@ -53,6 +53,7 @@ const Bridge = () => {
             <input
               className="input_amount ml-6"
               placeholder="Token Amount"
+              value={amount}
               onChange={(e) => setAmount(e.target.value)}
             />
           </div>
@@ -63,6 +64,12 @@ const Bridge = () => {
         <h2 className="mt-8 flex justify-center">
           Selected Token Address: {token}
         </h2>
+      </section>
+
+      <section>
+        <div className="flex justify-center mt-8">
+          <Reserve token={token} />
+        </div>
       </section>
 
       <section>

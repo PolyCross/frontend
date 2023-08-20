@@ -22,6 +22,10 @@ export interface BridgeProps {
   amount: string;
 }
 
+export interface TokenProps {
+  token: Address
+}
+
 export interface BridgeSwapInProps {
   amountIn: string;
   amountOutMin: string;
