@@ -8,7 +8,7 @@ const bridge = [
 
 export const BridgeABI = parseAbi(bridge);
 
-export const BridgeAddress = "0xEad0d3C980fc237A748ea88Ba8459Fa4C188eBAd";
+export const BridgeAddress = "0xfad4E0022f540B313BD8A77137E2f51e031810F1";
 
 // ===================================================================================================
 
@@ -21,8 +21,8 @@ const bridge_swap = [
 
 export const BridgeSwapABI = parseAbi(bridge_swap);
 
-export const BridgeSwapAddress = "0x53f5D3fAd7DA1bE9E2eaD516A0492E5CF21C9218";
+export const BridgeSwapAddress = "0x651611eB218D30Ab736c8548F7DB5F5F0b35Fa91";
 
-export const tokenA_address = "0xf93dd1e98Ad72f555522c1D25dEB663250aEfbAC"
-export const tokenB_address = "0xfc99C6B880D548f9172EdDe156B9d285F5027dD6";
-export const tokenC_address = "0x9652b3320550ceee00bca395060fad3419a94dc5";
+export const tokenA_address = "0x93B4087485e4eA8F03b4ed17Aa1B2d37640959D8"
+export const tokenB_address = "0x43d9cfaE13A9D82D14AB93E5cC673Df6DB7c7a19";
+export const tokenC_address = "0x2a6fD1E2DebAbfBb665D36A85aB32D8C36e0F8d7";
