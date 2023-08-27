@@ -2,7 +2,19 @@
 
 This is the front end of the **PolyCross** which is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Screenshot
+
+Home Page
+
 ![](public/screenshot-home.png)
+
+Bridge Page
+
+![](public/screenshot-bridge.png)
+
+Bridge Swap Page
+
+![](public/screenshot-bridge-swap.png)
 
 ## Build
 
